@@ -34,14 +34,18 @@
             </div>
         </div>
 
+        <h2>Works</h2>
+
         <div class="works-list">
             @foreach($user->works as $work)
                 <div class="works-list__item">
-                    <p>{{ $work->type }}</p>
+                    <a href="/work/{{ $work->id }}">
+                        <p>{{ $work->type }}</p>
 
-                    <p>{{ $work->title }}</p>
+                        <p>{{ $work->title }}</p>
 
-                    <p>{{ $work->created_at }}</p>
+                        <p>{{ $work->created_at }}</p>
+                    </a>
                 </div>
             @endforeach
         </div>
