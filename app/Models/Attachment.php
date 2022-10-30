@@ -11,6 +11,11 @@ class Attachment extends Model
 
     protected $guarded = [];
 
+    public function getFilename($path)
+    {
+        return substr($path, strpos($path, "/") + 1);
+    }
+
     public function work()
     {
         return $this->belongsTo(Work::class);
