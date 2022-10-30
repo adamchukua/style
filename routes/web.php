@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::group(['middleware' => 'verified'], function () {
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+
     Route::get('/work/create', [App\Http\Controllers\WorkController::class, 'create']);
     Route::post('/work/create', [App\Http\Controllers\WorkController::class, 'store']);
     Route::get('/work/{work}', [App\Http\Controllers\WorkController::class, 'show']);
