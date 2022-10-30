@@ -25,4 +25,6 @@ Route::group(['middleware' => 'verified'], function () {
     Route::get('/work/create', [App\Http\Controllers\WorkController::class, 'create']);
     Route::post('/work/create', [App\Http\Controllers\WorkController::class, 'store']);
     Route::get('/work/{work}', [App\Http\Controllers\WorkController::class, 'show']);
+
+    Route::get('/user/{user}', [App\Http\Controllers\UserController::class, 'show']);
 });

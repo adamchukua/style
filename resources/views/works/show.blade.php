@@ -7,7 +7,7 @@
 
         <h1>{{ $work->title }}</h1>
 
-        <a href="user/{{ $work->user->id }}">{{ $work->user->firstname }} {{ $work->user->lastname }}</a>
+        <a href="/user/{{ $work->user->id }}">{{ $work->user->firstname }} {{ $work->user->lastname }}</a>
 
         <p>{{ $work->text }}</p>
 
