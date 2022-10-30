@@ -47,11 +47,11 @@ class WorkController extends Controller
         $attachmentId = auth()->user()->works()->create($data)->id;
 
         foreach(request('attachments') as $attachment) {
-            $path = $attachment->storeAs('attachments', $attachment->getClientOriginalName());
+            $attachment->storeAs('public/attachments', $attachment->getClientOriginalName());
 
             Attachment::create([
                 'work_id' => $attachmentId,
-                'path' => $path,
+                'path' => 'attachments/' . $attachment->getClientOriginalName(),
             ]);
         }
 
@@ -62,11 +62,11 @@ class WorkController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Work $work)
     {
-        //
+        return view('works.show', compact('work'));
     }
 
     /**
