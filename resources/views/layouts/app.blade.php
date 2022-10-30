@@ -55,7 +55,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Dashboard</a>
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
 
                                     <a class="dropdown-item" href="#">Settings</a>
 
