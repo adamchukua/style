@@ -25,13 +25,16 @@
         <h2>Comments</h2>
 
         <div class="comments">
-            @can('create', \App\Models\Comment::class)
-                <form action="">
-                    @csrf
+            <form action="/work/{{ $work->id }}/comment/create" method="POST">
+                @csrf
 
-                    <input type="text">
-                </form>
-            @endcan
+                <div class="input-group">
+                    <input type="text" name="text" class="form-control" placeholder="Your comment..." aria-label="Your comment..." required>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Comment</button>
+                    </div>
+                </div>
+            </form>
 
             @foreach($work->comments as $comment)
                 {{ $comment->text }}<br>

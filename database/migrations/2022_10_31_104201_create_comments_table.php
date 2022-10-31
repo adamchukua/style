@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('work_id');
-            $table->unsignedBigInteger('comment-response_id');
-            $table->unsignedBigInteger('text');
+            $table->unsignedBigInteger('comment-response_id')->nullable();
+            $table->text('text');
             $table->timestamps();
         });
     }
