@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function show(User $user)
     {
-        $user = is_null($user) ? $user : auth()->user();
+        $user = $user->exists ? $user : auth()->user();
         $total_works = count($user->works);
         $music_works = DB::table('works')
             ->where('user_id', $user->id)
