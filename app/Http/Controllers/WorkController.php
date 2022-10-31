@@ -55,7 +55,7 @@ class WorkController extends Controller
             ]);
         }
 
-        return redirect('/home');
+        return redirect('/dashboard');
     }
 
     /**
