@@ -30,7 +30,12 @@
 
             @can('update', $user)
                 <div class="dashboard-manage">
-                    <a href="/work/create" class="btn btn-primary">New Work</a>
+                    @can('create', \App\Models\Work::class)
+                        <a href="/work/create" class="btn btn-primary">New Work</a>
+                    @else
+                        <button class="btn disabled">New Work</button>
+                    @endcan
+
                     <a href="/user/edit" class="btn btn-primary">Edit Profile</a>
                 </div>
             @endcan

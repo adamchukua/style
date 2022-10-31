@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attachment;
+use App\Models\User;
 use App\Models\Work;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,8 @@ class WorkController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Work::class);
+
         return view('works.create');
     }
 
@@ -36,6 +39,8 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Work::class);
+
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'text' => ['required', 'string', 'max:1000'],
