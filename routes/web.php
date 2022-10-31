@@ -27,4 +27,7 @@ Route::group(['middleware' => 'verified'], function () {
     Route::get('/work/{work}', [App\Http\Controllers\WorkController::class, 'show']);
 
     Route::get('/user/{user}', [App\Http\Controllers\UserController::class, 'show']);
+
+    Route::get('/edit-profile', [App\Http\Controllers\UserController::class, 'edit']);
+    Route::patch('/edit-profile', [App\Http\Controllers\UserController::class, 'update']);
 });

@@ -36,7 +36,7 @@
                         <button class="btn disabled">New Work</button>
                     @endcan
 
-                    <a href="/user/edit" class="btn btn-primary">Edit Profile</a>
+                    <a href="/edit-profile" class="btn btn-primary">Edit Profile</a>
                 </div>
             @endcan
         </div>

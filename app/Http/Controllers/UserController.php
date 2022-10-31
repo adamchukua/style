@@ -28,4 +28,27 @@ class UserController extends Controller
         return view('users.show', compact('total_works', 'music_works',
             'painting_works', 'literature_works', 'user'));
     }
+
+    public function edit()
+    {
+        $user = auth()->user();
+
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+
+        $data = $request->validate([
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'birthdate' => ['required', 'date', 'before:today'],
+            'gender' => ['required', 'in:male,female,other'],
+        ]);
+
+        $user->update($data);
+
+        return redirect('/dashboard');
+    }
 }
