@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => 'verified'], function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+    Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'show']);
 
     Route::get('/work/create', [App\Http\Controllers\WorkController::class, 'create']);
     Route::post('/work/create', [App\Http\Controllers\WorkController::class, 'store']);
