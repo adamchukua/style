@@ -27,6 +27,13 @@
                     <span class="dashboard-info-block__number">{{ $literature_works }}</span>
                 </div>
             </div>
+
+            @can('update', $user)
+                <div class="dashboard-manage">
+                    <a href="/work/create" class="btn btn-primary">New Work</a>
+                    <a href="/user/edit" class="btn btn-primary">Edit Profile</a>
+                </div>
+            @endcan
         </div>
 
         <h2>Works</h2>
@@ -40,6 +47,12 @@
                         <p>{{ $work->title }}</p>
 
                         <p>{{ $work->created_at }}</p>
+
+                        @can('update', $user)
+                            <a href="" class="btn btn-secondary">Edit</a>
+                        @endcan
+
+                        <a href="" class="btn btn-secondary">More</a>
                     </a>
                 </div>
             @endforeach
