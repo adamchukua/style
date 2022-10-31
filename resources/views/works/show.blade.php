@@ -21,6 +21,22 @@
                 </a>
             @endforeach
         </div>
+
+        <h2>Comments</h2>
+
+        <div class="comments">
+            @can('create', \App\Models\Comment::class)
+                <form action="">
+                    @csrf
+
+                    <input type="text">
+                </form>
+            @endcan
+
+            @foreach($work->comments as $comment)
+                {{ $comment->text }}<br>
+            @endforeach
+        </div>
     </div>
 </div>
 @endsection
