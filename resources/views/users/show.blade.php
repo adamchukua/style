@@ -4,6 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="dashboard">
+            <p>{{ $user->getRoleName() }}</p>
+
             <h1>{{ $user->firstname }} {{ $user->lastname }}</h1>
 
             <div class="dashboard-info">
@@ -58,6 +60,22 @@
                         @endcan
 
                         <a href="" class="btn btn-secondary">More</a>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+
+        <h2>Reviews</h2>
+
+        <div class="works-list">
+            @foreach($user->reviews as $review)
+                <div class="works-list__item">
+                    <a href="/work/{{ $review->work->id }}">
+                        <p>{{ $review->work->type }}</p>
+
+                        <p>{{ $review->work->title }}</p>
+
+                        <p>{{ $review->work->created_at }}</p>
                     </a>
                 </div>
             @endforeach

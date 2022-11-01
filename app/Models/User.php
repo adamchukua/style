@@ -46,6 +46,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function getRoleName()
+    {
+        switch (auth()->user()->role)
+        {
+            case Role::AUTHOR:
+                return 'author';
+            case Role::EXPERT:
+                return 'expert';
+            case Role::ADMIN:
+                return 'admin';
+        }
+    }
+
     public function works()
     {
         return $this->hasMany(Work::class);
@@ -54,5 +67,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function expert()
+    {
+        return $this->hasOne(Expert::class);
     }
 }

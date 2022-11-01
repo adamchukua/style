@@ -59,6 +59,10 @@
 
                                     <a class="dropdown-item" href="/edit-profile">Edit profile</a>
 
+                                    @can('viewAny', \App\Models\Expert::class)
+                                        <a class="dropdown-item" href="/admin/experts">Experts</a>
+                                    @endcan
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

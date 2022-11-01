@@ -32,4 +32,10 @@ Route::group(['middleware' => 'verified'], function () {
     Route::patch('/edit-profile', [App\Http\Controllers\UserController::class, 'update']);
 
     Route::post('/work/{work}/comment/create', [App\Http\Controllers\CommentController::class, 'store']);
+
+    Route::post('/work/{work}/review/create', [App\Http\Controllers\CommentController::class, 'store']);
+
+    Route::get('/admin/experts', [App\Http\Controllers\ExpertController::class, 'index']);
+    Route::get('/admin/expert/create', [App\Http\Controllers\ExpertController::class, 'create']);
+    Route::post('/admin/expert/create', [App\Http\Controllers\ExpertController::class, 'store']);
 });
