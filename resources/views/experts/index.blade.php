@@ -16,7 +16,11 @@
 
                     <a href="/admin/expert/{{ $expert->id }}/edit" class="btn btn-secondary">Edit</a>
 
-                    <a href="/admin/expert/{{ $expert->id }}/delete" class="btn btn-secondary">Delete</a>
+                    <form action="/admin/expert/{{ $expert->id }}/delete" method="POST">
+                        @csrf
+
+                        <button type="submit" class="btn btn-secondary">Delete</button>
+                    </form>
                 </div>
             @endforeach
         </div>

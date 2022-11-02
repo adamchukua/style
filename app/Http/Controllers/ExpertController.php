@@ -49,12 +49,13 @@ class ExpertController extends Controller
         ]);
 
         $user_data['password'] = bcrypt($user_data['password']);
-        $user_id = User::create(array_merge($user_data, [
-            'role' => Role::EXPERT,
-        ]))->id;
+        $user = User::create($user_data);
+        $user->sendEmailVerificationNotification();
+        $user->role = Role::EXPERT;
+        $user->save();
 
         Expert::create(array_merge($expert_data, [
-            'user_id' => $user_id,
+            'user_id' => $user->id,
         ]));
 
         return redirect('/admin/experts');
@@ -88,6 +89,17 @@ class ExpertController extends Controller
 
         $expert->user()->update($user_data);
         $expert->update($expert_data);
+
+        return redirect('/admin/experts');
+    }
+
+    public function delete(Expert $expert)
+    {
+        $this->authorize('delete', $expert);
+
+        $expert->user->role = Role::AUTHOR;
+        $expert->user->save();
+        $expert->delete();
 
         return redirect('/admin/experts');
     }

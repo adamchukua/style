@@ -66,7 +66,7 @@ class ExpertPolicy
      */
     public function delete(User $user, Expert $expert)
     {
-        //
+        return $user->role == Role::ADMIN;
     }
 
     /**
