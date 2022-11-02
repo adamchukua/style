@@ -19,7 +19,7 @@ class ReviewPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->role = Role::EXPERT;
     }
 
     /**

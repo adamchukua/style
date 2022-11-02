@@ -65,7 +65,7 @@
             @endforeach
         </div>
 
-        @can('create', \App\Models\Review::class)
+        @can('viewAny', \App\Models\Review::class)
             <h2>Reviews</h2>
 
             <div class="works-list">
