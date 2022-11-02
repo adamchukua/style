@@ -65,21 +65,23 @@
             @endforeach
         </div>
 
-        <h2>Reviews</h2>
+        @can('create', \App\Models\Review::class)
+            <h2>Reviews</h2>
 
-        <div class="works-list">
-            @foreach($user->reviews as $review)
-                <div class="works-list__item">
-                    <a href="/work/{{ $review->work->id }}">
-                        <p>{{ $review->work->type }}</p>
+            <div class="works-list">
+                @foreach($user->reviews as $review)
+                    <div class="works-list__item">
+                        <a href="/work/{{ $review->work->id }}">
+                            <p>{{ $review->work->type }}</p>
 
-                        <p>{{ $review->work->title }}</p>
+                            <p>{{ $review->work->title }}</p>
 
-                        <p>{{ $review->work->created_at }}</p>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+                            <p>{{ $review->work->created_at }}</p>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @endcan
     </div>
 </div>
 @endsection
