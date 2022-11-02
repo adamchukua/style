@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,9 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        return view('users.edit', compact('user'));
+        $countries = DB::table('countries')->get();
+
+        return view('users.edit', compact('user', 'countries'));
     }
 
     public function update(Request $request)

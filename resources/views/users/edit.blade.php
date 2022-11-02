@@ -78,6 +78,55 @@
                 </div>
             </div>
 
+            @can('update', $user->expert)
+                <div class="row mb-3">
+                    <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
+
+                    <div class="col-md-6">
+                        <input
+                            id="phone"
+                            type="tel"
+                            class="form-control @error('phone') is-invalid @enderror"
+                            name="phone" value="{{ old('phone') ?? $user->expert->phone }}"
+                            required autocomplete="phone">
+
+                        @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('Expert Sphere') }}</label>
+
+                    <div class="col-md-6">
+                        <select name="type" class="form-select">
+                            <option value="music" {{ ($user->expert->type == 'music') ? 'selected' : '' }}>Music</option>
+                            <option value="painting" {{ ($user->expert->type == 'painting') ? 'selected' : '' }}>Painting</option>
+                            <option value="literature" {{ ($user->expert->type == 'literature') ? 'selected' : '' }}>Literature</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="nationality" class="col-md-4 col-form-label text-md-end">{{ __('Nationality') }}</label>
+
+                    <div class="col-md-6">
+                        <select name="nationality" class="form-select">
+                            @foreach($countries as $country)
+                                <option
+                                    value="{{ $country->code }}"
+                                    {{ ($user->expert->nationality == $country->code) ? 'selected' : '' }}>
+                                    {{ $country->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            @endcan
+
             <div class="row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">
