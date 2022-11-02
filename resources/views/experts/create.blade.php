@@ -73,9 +73,9 @@
 
                             <div class="col-md-6">
                                 <select name="gender" class="form-select">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other" selected>Other</option>
+                                    <option value="male" {{ (old('gender') == 'male') ? 'selected' : '' }}>Male</option>
+                                    <option value="female" {{ (old('gender') == 'male') ? 'selected' : '' }}>Female</option>
+                                    <option value="other" {{ (old('gender') == 'other') ? 'selected' : (old('gender') != 'male' && old('gender') != 'female' ? 'selected' : '') }}>Other</option>
                                 </select>
                             </div>
                         </div>
@@ -118,9 +118,15 @@
 
                             <div class="col-md-6">
                                 <select name="type" class="form-select">
-                                    <option value="music" selected>Music</option>
-                                    <option value="painting">Painting</option>
-                                    <option value="literature">Literature</option>
+                                    <option value="music" {{ (old('type') == 'music') ? 'selected' : '' }}>
+                                        Music
+                                    </option>
+                                    <option value="painting" {{ (old('type') == 'painting') ? 'selected' : '' }}>
+                                        Painting
+                                    </option>
+                                    <option value="literature" {{ (old('type') == 'literature') ? 'selected' : '' }}>
+                                        Literature
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -132,7 +138,8 @@
                                 <select name="nationality" class="form-select">
                                     @foreach($countries as $country)
                                         <option
-                                            value="{{ $country->code }}">
+                                            value="{{ $country->code }}"
+                                            {{ (old('nationality') == $country->code) ? 'selected' : '' }}>
                                             {{ $country->name }}
                                         </option>
                                     @endforeach
