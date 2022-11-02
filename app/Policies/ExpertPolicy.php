@@ -54,7 +54,7 @@ class ExpertPolicy
      */
     public function update(User $user, Expert $expert)
     {
-        //
+        return $user->role == Role::ADMIN || $user->expert->id == $expert->id;
     }
 
     /**

@@ -38,4 +38,6 @@ Route::group(['middleware' => 'verified'], function () {
     Route::get('/admin/experts', [App\Http\Controllers\ExpertController::class, 'index']);
     Route::get('/admin/expert/create', [App\Http\Controllers\ExpertController::class, 'create']);
     Route::post('/admin/expert/create', [App\Http\Controllers\ExpertController::class, 'store']);
+    Route::get('/admin/expert/{expert}/edit', [App\Http\Controllers\ExpertController::class, 'edit']);
+    Route::patch('/admin/expert/{expert}/edit', [App\Http\Controllers\ExpertController::class, 'update']);
 });
