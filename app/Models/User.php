@@ -59,6 +59,11 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function lastnameFirstLetter($user)
+    {
+        return substr($user->lastname, 0, 1) . '.';
+    }
+
     public function works()
     {
         return $this->hasMany(Work::class);
