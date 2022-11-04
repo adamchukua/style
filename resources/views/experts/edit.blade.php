@@ -20,7 +20,7 @@
                                        type="text"
                                        class="form-control @error('firstname') is-invalid @enderror"
                                        name="firstname"
-                                       value="{{ old('firstname') ?? $expert->user->firstname }}"
+                                       value="{{ old('firstname', $expert->user->firstname) }}"
                                        required autocomplete="firstname" autofocus>
 
                                 @error('firstname')
@@ -39,7 +39,7 @@
                                        type="text"
                                        class="form-control @error('lastname') is-invalid @enderror"
                                        name="lastname"
-                                       value="{{ old('lastname') ?? $expert->user->lastname }}"
+                                       value="{{ old('lastname', $expert->user->lastname) }}"
                                        required autocomplete="lastname" autofocus>
 
                                 @error('lastname')
@@ -58,7 +58,7 @@
                                        type="date"
                                        class="form-control @error('birthdate') is-invalid @enderror"
                                        name="birthdate"
-                                       value="{{ old('birthdate') ?? $expert->user->birthdate }}"
+                                       value="{{ old('birthdate', $expert->user->birthdate) }}"
                                        required autocomplete="birthdate" autofocus>
 
                                 @error('birthdate')
@@ -89,7 +89,7 @@
                                     id="phone"
                                     type="tel"
                                     class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') ?? $expert->phone }}"
+                                    name="phone" value="{{ old('phone', $expert->phone) }}"
                                     required autocomplete="phone">
 
                                 @error('phone')
