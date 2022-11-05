@@ -25,7 +25,7 @@
                     </form>
                 </div>
             @empty
-                No experts...
+                There are no experts...
             @endforelse
 
             <div class="row">

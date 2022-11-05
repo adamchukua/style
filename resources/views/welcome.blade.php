@@ -77,7 +77,7 @@
                             </a>
                         </div>
                     @empty
-                        There is no works...
+                        There are no works...
                     @endforelse
 
                     <div class="row">
