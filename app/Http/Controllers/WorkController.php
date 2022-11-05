@@ -49,13 +49,14 @@ class WorkController extends Controller
             'attachments.*' => ['required', 'mimes:pdf,mp3,png', 'max:15360'],
         ]);
 
-        $attachmentId = auth()->user()->works()->create($data)->id;
+        $workId = auth()->user()->works()->create($data)->id;
 
-        foreach(request('attachments') as $attachment) {
+        foreach(request('attachments') as $attachment)
+        {
             $attachment->storeAs('public/attachments', $attachment->getClientOriginalName());
 
             Attachment::create([
-                'work_id' => $attachmentId,
+                'work_id' => $workId,
                 'path' => 'attachments/' . $attachment->getClientOriginalName(),
             ]);
         }
@@ -78,11 +79,13 @@ class WorkController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Work $work)
     {
-        //
+        $this->authorize('update', auth()->user());
+
+        return view('works.edit', compact('work'));
     }
 
     /**
@@ -90,11 +93,37 @@ class WorkController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Work $work)
     {
-        //
+        $this->authorize('update', auth()->user());
+
+        $data = $request->validate([
+            'title' => ['string', 'max:255'],
+            'text' => ['string', 'max:1000'],
+            'type' => ['in:music,painting,literature'],
+            'attachments' => ['array'],
+            'attachments.*' => ['mimes:pdf,mp3,png', 'max:15360'],
+        ]);
+
+        $work->attachments->each->delete();
+        $work->update($data);
+
+        if ($request['attachments'])
+        {
+            foreach(request('attachments') as $attachment)
+            {
+                $attachment->storeAs('public/attachments', $attachment->getClientOriginalName());
+
+                Attachment::create([
+                    'work_id' => $work->id,
+                    'path' => 'attachments/' . $attachment->getClientOriginalName(),
+                ]);
+            }
+        }
+
+        return redirect('/dashboard');
     }
 
     /**
