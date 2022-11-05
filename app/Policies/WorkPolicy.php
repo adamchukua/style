@@ -67,7 +67,7 @@ class WorkPolicy
      */
     public function delete(User $user, Work $work)
     {
-        //
+        return $user->id == $work->user->id;
     }
 
     /**

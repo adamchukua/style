@@ -24,6 +24,9 @@ Route::group(['middleware' => 'verified'], function () {
     Route::get('/work/create', [App\Http\Controllers\WorkController::class, 'create']);
     Route::post('/work/create', [App\Http\Controllers\WorkController::class, 'store']);
     Route::get('/work/{work}', [App\Http\Controllers\WorkController::class, 'show']);
+    Route::get('/work/{work}/edit', [App\Http\Controllers\WorkController::class, 'edit']);
+    Route::patch('/work/{work}/edit', [App\Http\Controllers\WorkController::class, 'update']);
+    Route::post('/work/{work}/delete', [App\Http\Controllers\WorkController::class, 'delete']);
 
     Route::get('/user/{user}', [App\Http\Controllers\UserController::class, 'show']);
 

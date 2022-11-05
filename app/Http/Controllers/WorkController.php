@@ -101,10 +101,14 @@ class WorkController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Work  $work
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy(Work $work)
+    public function delete(Work $work)
     {
-        //
+        $this->authorize('delete', $work);
+
+        $work->delete();
+
+        return redirect('/dashboard');
     }
 }

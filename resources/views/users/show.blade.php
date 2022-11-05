@@ -59,8 +59,12 @@
                             <a href="/work/{{ $work->id }}/edit" class="btn btn-secondary">Edit</a>
                         @endcan
 
-                        @can('delete', $user)
-                            <a href="/work/{{ $work->id }}/delete" class="btn btn-secondary">Delete</a>
+                        @can('delete', $work)
+                            <form action="/work/{{ $work->id }}/delete" method="POST">
+                                @csrf
+
+                                <button type="submit" class="btn btn-secondary">Delete</button>
+                            </form>
                         @endcan
 
                         <a href="" class="btn btn-secondary">More</a>
