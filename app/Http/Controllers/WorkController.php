@@ -107,11 +107,12 @@ class WorkController extends Controller
             'attachments.*' => ['mimes:pdf,mp3,png', 'max:15360'],
         ]);
 
-        $work->attachments->each->delete();
         $work->update($data);
 
         if ($request['attachments'])
         {
+            $work->attachments->each->delete();
+
             foreach(request('attachments') as $attachment)
             {
                 $attachment->storeAs('public/attachments', $attachment->getClientOriginalName());
