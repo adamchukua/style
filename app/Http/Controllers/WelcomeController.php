@@ -13,7 +13,7 @@ class WelcomeController extends Controller
     public function index()
     {
         // Sort by time by default
-        $works = Work::orderBy('created_at', 'desc')->get();
+        $works = Work::orderBy('created_at', 'desc')->paginate(10);
 
         return view('welcome', compact('works'));
     }
@@ -52,7 +52,7 @@ class WelcomeController extends Controller
             // TODO: sort by rating
         }
 
-        $works = $works->get();
+        $works = $works->paginate(10);
 
         return view('welcome', compact('works'));
     }

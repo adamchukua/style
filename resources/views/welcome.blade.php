@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="works-list">
-                    @foreach($works as $work)
+                    @forelse($works as $work)
                         <div class="works-list__item">
                             <a href="/work/{{ $work->id }}">
                                 <p>{{ $work->user->firstname }} {{ $work->user->lastnameFirstLetter($work->user) }}</p>
@@ -76,7 +76,15 @@
                                 <p>{{ $work->created_at }}</p>
                             </a>
                         </div>
-                    @endforeach
+                    @empty
+                        There is no works...
+                    @endforelse
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            {{ $works->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
