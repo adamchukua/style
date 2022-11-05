@@ -46,6 +46,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($user) {
+            $user->works->each->delete();
+            $user->reviews->each->delete();
+            $user->comments->each->delete();
+            $user->expert->delete();
+        });
+    }
+
     public function getRoleName()
     {
         switch (auth()->user()->role)

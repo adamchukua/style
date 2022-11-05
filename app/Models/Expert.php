@@ -11,6 +11,15 @@ class Expert extends Model
 
     protected $guarded = [];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($expert) {
+            $expert->reviews->each->delete();
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

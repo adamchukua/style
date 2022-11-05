@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Work extends Model
 {
@@ -14,6 +15,22 @@ class Work extends Model
         'text',
         'type',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($work) {
+            $work->comments->each->delete();
+            $work->reviews->each->delete();
+
+            foreach ($work->attachments as $attachment) {
+                $attachment->delete();
+
+                Storage::disk('public')->delete($attachment->path);
+            }
+        });
+    }
 
     public function user()
     {
