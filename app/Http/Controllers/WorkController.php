@@ -53,11 +53,11 @@ class WorkController extends Controller
 
         foreach(request('attachments') as $attachment)
         {
-            $attachment->storeAs('public/attachments', $attachment->getClientOriginalName());
+            $attachment->storeAs('public/attachments/' . $workId . '/', $attachment->getClientOriginalName());
 
             Attachment::create([
                 'work_id' => $workId,
-                'path' => 'attachments/' . $attachment->getClientOriginalName(),
+                'path' => 'attachments/' . $workId . '/' . $attachment->getClientOriginalName(),
             ]);
         }
 
@@ -115,11 +115,11 @@ class WorkController extends Controller
 
             foreach(request('attachments') as $attachment)
             {
-                $attachment->storeAs('public/attachments', $attachment->getClientOriginalName());
+                $attachment->storeAs('public/attachments/' . $work->id . '/', $attachment->getClientOriginalName());
 
                 Attachment::create([
                     'work_id' => $work->id,
-                    'path' => 'attachments/' . $attachment->getClientOriginalName(),
+                    'path' => 'attachments/' . $work->id . '/' . $attachment->getClientOriginalName(),
                 ]);
             }
         }

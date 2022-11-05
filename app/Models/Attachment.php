@@ -13,7 +13,7 @@ class Attachment extends Model
 
     public function getFilename($path)
     {
-        return substr($path, strpos($path, "/") + 1);
+        return substr(strrchr($path, "/"), 1);
     }
 
     public function work()
