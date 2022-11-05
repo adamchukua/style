@@ -25,8 +25,8 @@ class UserController extends Controller
             ->where('user_id', $user->id)
             ->where('type', 'literature')
             ->count();
-        $works = $user->works()->paginate(10);
-        $reviews = $user->reviews()->paginate(10);
+        $works = $user->works()->latest()->paginate(10);
+        $reviews = $user->reviews()->latest()->paginate(10);
 
         return view('users.show', compact(
             'total_works',
