@@ -46,7 +46,7 @@
         <h2>Works</h2>
 
         <div class="works-list">
-            @foreach($user->works as $work)
+            @forelse($works as $work)
                 <div class="works-list__item">
                     <a href="/work/{{ $work->id }}">
                         <p>{{ $work->type }}</p>
@@ -56,20 +56,32 @@
                         <p>{{ $work->created_at }}</p>
 
                         @can('update', $user)
-                            <a href="" class="btn btn-secondary">Edit</a>
+                            <a href="/work/{{ $work->id }}/edit" class="btn btn-secondary">Edit</a>
+                        @endcan
+
+                        @can('delete', $user)
+                            <a href="/work/{{ $work->id }}/delete" class="btn btn-secondary">Delete</a>
                         @endcan
 
                         <a href="" class="btn btn-secondary">More</a>
                     </a>
                 </div>
-            @endforeach
+            @empty
+                There is no works...
+            @endforelse
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    {{ $works->links() }}
+                </div>
+            </div>
         </div>
 
         @can('viewAny', \App\Models\Review::class)
             <h2>Reviews</h2>
 
             <div class="works-list">
-                @foreach($user->reviews as $review)
+                @forelse($user->reviews as $review)
                     <div class="works-list__item">
                         <a href="/work/{{ $review->work->id }}">
                             <p>{{ $review->work->type }}</p>
@@ -79,7 +91,16 @@
                             <p>{{ $review->work->created_at }}</p>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    There are no reviews...
+                @endforelse
+
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $works->links() }}
+                    </div>
+                </div>
             </div>
         @endcan
     </div>
