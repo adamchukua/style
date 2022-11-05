@@ -43,14 +43,7 @@ class WorkPolicy
     {
         $last_work = $user->works()->latest()->first();
 
-        if (is_null($last_work))
-        {
-            return true;
-        }
-        else
-        {
-            return $last_work->created_at->diff(date("Y-m-d H:i:s"))->h > 24;
-        }
+        return is_null($last_work) || $last_work->created_at->diff(date("Y-m-d H:i:s"))->d >= 1;
     }
 
     /**
