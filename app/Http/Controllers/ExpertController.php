@@ -15,7 +15,7 @@ class ExpertController extends Controller
     {
         $this->authorize('viewAny', Expert::class);
 
-        $experts = Expert::all();
+        $experts = Expert::paginate(10);
 
         return view('experts.index', compact('experts'));
     }

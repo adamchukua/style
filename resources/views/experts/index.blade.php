@@ -24,6 +24,12 @@
                         <button type="submit" class="btn btn-secondary">Delete</button>
                     </form>
                 </div>
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $experts->links() }}
+                    </div>
+                </div>
             @empty
                 No experts...
             @endforelse
