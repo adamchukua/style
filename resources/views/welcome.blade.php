@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ' – Music. Painting. Literature.')
+
 @section('content')
     <header class="header">
         <img src="/img/svg/logo-big.svg" alt="" class="header__title">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title',  $work->title . ' – ' . $work->type . ' – ' . config('app.name', 'Laravel'))
+
 @section('content')
 <div class="container">
     <div class="row">

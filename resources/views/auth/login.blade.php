@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Login – ' . config('app.name', 'Laravel'))
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
