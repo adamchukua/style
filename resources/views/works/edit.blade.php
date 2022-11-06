@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h1>Editing your work</h1>
+        <h2 class="text-center">Editing "{{ $work->title }}"</h2>
 
         <form method="POST" action="/work/{{ $work->id }}/edit" enctype="multipart/form-data">
             @csrf
@@ -50,7 +50,7 @@
                 <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('Type of work') }}</label>
 
                 <div class="col-md-6">
-                    <select name="type" class="form-select">
+                    <select name="type" class="form-control form-select">
                         <option value="music" {{ old('type', $work->type) == 'music' ? 'selected' : '' }}>Music</option>
                         <option value="painting" {{ old('type', $work->type) == 'painting' ? 'selected' : '' }}>Painting</option>
                         <option value="literature" {{ old('type', $work->type) == 'literature' ? 'selected' : '' }}>Literature</option>
