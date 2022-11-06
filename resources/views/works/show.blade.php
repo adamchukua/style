@@ -3,17 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <span>{{ $work->type }}</span>
+        <p class="work__type work__type--{{ $work->type }}">{{ $work->type }}</p>
 
         <div class="d-flex justify-content-between align-items-center">
-            <h1>{{ $work->title }}</h1>
+            <h1 class="work__title">{{ $work->title }}</h1>
 
             @can('create', \App\Models\Work::class)
                 <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
             @endcan
         </div>
 
-        <a href="/user/{{ $work->user->id }}">{{ $work->user->firstname }} {{ $work->user->lastname }}</a>
+        <a href="/user/{{ $work->user->id }}" class="work__author">
+            {{ $work->user->firstname }} {{ $work->user->lastname }}
+        </a>
 
         <p>{{ $work->text }}</p>
 

@@ -104,7 +104,7 @@
                             <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('Expert Sphere') }}</label>
 
                             <div class="col-md-6">
-                                <select name="type" class="form-select">
+                                <select name="type" class="form-control form-select">
                                     <option value="music" {{ ($expert->type == 'music') ? 'selected' : '' }}>Music</option>
                                     <option value="painting" {{ ($expert->type == 'painting') ? 'selected' : '' }}>Painting</option>
                                     <option value="literature" {{ ($expert->type == 'literature') ? 'selected' : '' }}>Literature</option>
@@ -116,7 +116,7 @@
                             <label for="nationality" class="col-md-4 col-form-label text-md-end">{{ __('Nationality') }}</label>
 
                             <div class="col-md-6">
-                                <select name="nationality" class="form-select">
+                                <select name="nationality" class="form-control form-select">
                                     @foreach($countries as $country)
                                         <option
                                             value="{{ $country->code }}"

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Edit Profile</h1>
+        <h2 class="text-center">Edit Profile</h2>
 
         <form action="/edit-profile" method="post" enctype="multipart/form-data">
             @csrf
@@ -70,7 +70,7 @@
                 <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
 
                 <div class="col-md-6">
-                    <select name="gender" class="form-select">
+                    <select name="gender" class="form-control form-select">
                         <option value="male" {{ ($user->gender == 'male') ? 'selected' : '' }}>Male</option>
                         <option value="female" {{ ($user->gender == 'female') ? 'selected' : '' }}>Female</option>
                         <option value="other" {{ ($user->gender == 'other') ? 'selected' : '' }}>Other</option>
@@ -102,7 +102,7 @@
                     <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('Expert Sphere') }}</label>
 
                     <div class="col-md-6">
-                        <select name="type" class="form-select">
+                        <select name="type" class="form-control form-select">
                             <option value="music" {{ ($user->expert->type == 'music') ? 'selected' : '' }}>Music</option>
                             <option value="painting" {{ ($user->expert->type == 'painting') ? 'selected' : '' }}>Painting</option>
                             <option value="literature" {{ ($user->expert->type == 'literature') ? 'selected' : '' }}>Literature</option>
@@ -114,7 +114,7 @@
                     <label for="nationality" class="col-md-4 col-form-label text-md-end">{{ __('Nationality') }}</label>
 
                     <div class="col-md-6">
-                        <select name="nationality" class="form-select">
+                        <select name="nationality" class="form-control form-select">
                             @foreach($countries as $country)
                                 <option
                                     value="{{ $country->code }}"
