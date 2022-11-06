@@ -7,28 +7,23 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-.header {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url("/public/img/svg/blob.svg");
-    background-size: 100%;
+h1,
+h2 {
+    font-weight: bold;
+}
 
-    &__logo {
-        width: 125px;
-    }
+h1 {
+    font-size: 4.5rem;
+    padding: 2rem 0;
+}
 
-    &__title {
-        width: 300px;
-    }
+h2 {
+    font-size: 3.5rem;
+    padding: 1.5rem 0;
+}
 
-    &__subtitle {
-        margin-top: 1rem;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
+.search-filters .btn {
+    margin-right: 15px;
 }
 
 .nav-link {
@@ -88,12 +83,35 @@
     }
 }
 
-h2 {
-    font-size: 3.5rem;
+.link-unstyled,
+.link-unstyled:link,
+.link-unstyled:hover {
+    color: inherit;
+    text-decoration: inherit;
 }
 
-.search-filters .btn {
-    margin-right: 15px;
+.header {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/public/img/svg/blob.svg");
+    background-size: 100%;
+
+    &__logo {
+        width: 125px;
+    }
+
+    &__title {
+        width: 300px;
+    }
+
+    &__subtitle {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 }
 
 .works-list {
@@ -103,12 +121,13 @@ h2 {
         color: #000;
         text-decoration: none;
         transition: box-shadow 0.25s;
+        padding-bottom: 1.5rem;
 
         &:hover {
             color: #000;
-            -webkit-box-shadow: 10px 10px 0 0 #ffec6d;
-            -moz-box-shadow: 10px 10px 0 0 #ffec6d;
-            box-shadow: 10px 10px 0 0 #ffec6d;
+            -webkit-box-shadow: 10px 10px 0 0 #000;
+            -moz-box-shadow: 10px 10px 0 0 #000;
+            box-shadow: 10px 10px 0 0 #000;
         }
 
         &__type {
@@ -119,11 +138,92 @@ h2 {
             font-weight: bold;
             color: rgba(255, 255, 255, 0.5);
             text-align: center;
+
+            &--music {
+                background: $music-color;
+            }
+
+            &--painting {
+                background: $painting-color;
+            }
+
+            &--literature {
+                background: $literature-color;
+            }
         }
 
         &__title {
             font-weight: bold;
             font-size: 1.2rem;
+        }
+    }
+}
+
+.dashboard {
+    &__role {
+        background: $primary-color-opacity-50;
+        width: fit-content;
+        padding: 0.2rem 1rem;
+        border-radius: 18px;
+        margin-bottom: 0;
+    }
+
+    &-info {
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        grid-template-areas:
+            "total music comments"
+            "total painting reviews"
+            "total literature .";
+        column-gap: 0.7rem;
+        row-gap: 0.7rem;
+
+        &-block {
+            font-size: 1.1rem;
+            border-radius: 35px;
+            padding: 1rem;
+
+            &__number {
+                font-weight: bold;
+                display: block;
+                font-size: 2rem;
+            }
+
+            &--total {
+                grid-area: total;
+                background: $total-color;
+            }
+
+            &--music {
+                grid-area: music;
+                background: $music-color;
+            }
+
+            &--painting {
+                grid-area: painting;
+                background: $painting-color;
+            }
+
+            &--literature {
+                grid-area: literature;
+                background: $literature-color;
+            }
+
+            &--comments {
+                grid-area: comments;
+                border: 5px solid $comments-color;
+            }
+
+            &--reviews {
+                grid-area: reviews;
+                border: 5px solid $reviews-color;
+            }
+        }
+    }
+
+    &-manage {
+        .btn {
+            margin-right: 1rem;
         }
     }
 }

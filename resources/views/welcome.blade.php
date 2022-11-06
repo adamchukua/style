@@ -65,14 +65,18 @@
 
                 <div class="works-list mt-4">
                     @forelse($works as $work)
-                        <a href="/work/{{ $work->id }}" class="works-list-item col-3">
-                            <p class="works-list-item__type">{{ $work->type }}</p>
+                        <a href="/work/{{ $work->id }}" class="link-unstyled col-3">
+                            <div class="works-list-item">
+                                <p class="works-list-item__type works-list-item__type--{{ $work->type }}">
+                                    {{ $work->type }}
+                                </p>
 
-                            <p class="works-list-item__author">{{ $work->user->firstname }} {{ $work->user->lastnameFirstLetter($work->user) }}</p>
+                                <p class="works-list-item__author">{{ $work->user->firstname }} {{ $work->user->lastnameFirstLetter($work->user) }}</p>
 
-                            <p class="works-list-item__title">{{ $work->title }}</p>
+                                <p class="works-list-item__title">{{ $work->title }}</p>
 
-                            <p class="works-list-item__date">{{ $work->created_at }}</p>
+                                <p class="works-list-item__date">{{ $work->created_at }}</p>
+                            </div>
                         </a>
                     @empty
                         There are no works...
