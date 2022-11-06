@@ -45,13 +45,13 @@
 
                 <div class="dashboard-info-block dashboard-info-block--comments">
                     Comments
-                    <span class="dashboard-info-block__number">{{ $literature_works }}</span>
+                    <span class="dashboard-info-block__number">{{ $user->comments->count() }}</span>
                 </div>
 
                 @can('create', \App\Models\Review::class)
                     <div class="dashboard-info-block dashboard-info-block--reviews">
                         Reviews
-                        <span class="dashboard-info-block__number">{{ $literature_works }}</span>
+                        <span class="dashboard-info-block__number">{{ $user->reviews->count() }}</span>
                     </div>
                 @endcan
             </div>
