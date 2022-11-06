@@ -5,7 +5,13 @@
     <div class="row">
         <span>{{ $work->type }}</span>
 
-        <h1>{{ $work->title }}</h1>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>{{ $work->title }}</h1>
+
+            @can('create', \App\Models\Work::class)
+                <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+            @endcan
+        </div>
 
         <a href="/user/{{ $work->user->id }}">{{ $work->user->firstname }} {{ $work->user->lastname }}</a>
 
@@ -23,10 +29,6 @@
                     <p class="reviews-item__mark">Innovativeness: {{ $review->innovativeness }}/10</p>
                 </div>
             @endforeach
-
-            @can('create', \App\Models\Review::class)
-                <a href="">Add review</a>
-            @endcan
         </div>
 
         <div class="attachments">

@@ -1,0 +1,8 @@
+<svg viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+  <g transform="translate(-360, -11)">
+    <path class="blob" d="M404,344Q311,438,219,388.5Q127,339,96,227.5Q65,116,195,67Q325,18,411,134Q497,250,404,344Z" fill="#8565fc"></path>
+  </g>
+  <g transform="translate(-69, -181)">
+    <path class="blob" d="M404,344Q311,438,219,388.5Q127,339,96,227.5Q65,116,195,67Q325,18,411,134Q497,250,404,344Z" fill="#8565fc"></path>
+  </g>
+</svg>

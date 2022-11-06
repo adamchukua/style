@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Review;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Work;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ReviewPolicy
@@ -38,11 +39,12 @@ class ReviewPolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Work  $work
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user)//, Work $work)
     {
-        //return $user->role_id == Role::EXPERT && $user->expert->type == '';
+        return $user->role == Role::EXPERT;//&& $user->expert->type == $work->type;
     }
 
     /**

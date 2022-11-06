@@ -89,9 +89,19 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main
+            @if(Request::path() !== '/' and !str_contains(Request::path(), 'search'))
+                class="py-4"
+            @endif
+        >
             @yield('content')
         </main>
+
+        <footer>
+            <div class="text-center mt-5 mb-2">
+                © {{ now()->year }} {{ config('app.name', 'Laravel') }}. All rights reserved.
+            </div>
+        </footer>
     </div>
 </body>
 </html>

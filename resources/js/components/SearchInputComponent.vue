@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by author's name..." v-model="test">
+        <div class="input-group">
+            <input type="text" class="form-control form-control--search" placeholder="Search by author's name..." v-model="test">
 
-            <div class="input-group-append">
-                <a class="btn btn-outline-secondary" :href="'/search?name=' + test">Search</a>
+            <div class="input-group-append ml-1">
+                <a class="btn btn-outline-secondary btn--search" :href="'/search?name=' + test">Search</a>
             </div>
         </div>
     </div>

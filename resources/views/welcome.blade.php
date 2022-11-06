@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    <header class="header">
+        <img src="/img/svg/logo-big.svg" alt="" class="header__title">
+        <p class="header__subtitle">Music. Painting. Literature.</p>
+    </header>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <header>
-                    <h1 class="header__title">Style</h1>
-                    <p class="header__subtitle">Music. Painting. Literature.</p>
-                </header>
-
                 <div class="search">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between align-items-center">
                         <h2>Explore the works</h2>
 
                         <search-input-component></search-input-component>
@@ -63,19 +63,17 @@
                     </div>
                 </div>
 
-                <div class="works-list">
+                <div class="works-list mt-4">
                     @forelse($works as $work)
-                        <div class="works-list__item">
-                            <a href="/work/{{ $work->id }}">
-                                <p>{{ $work->user->firstname }} {{ $work->user->lastnameFirstLetter($work->user) }}</p>
+                        <a href="/work/{{ $work->id }}" class="works-list-item col-3">
+                            <p class="works-list-item__type">{{ $work->type }}</p>
 
-                                <p>{{ $work->type }}</p>
+                            <p class="works-list-item__author">{{ $work->user->firstname }} {{ $work->user->lastnameFirstLetter($work->user) }}</p>
 
-                                <p>{{ $work->title }}</p>
+                            <p class="works-list-item__title">{{ $work->title }}</p>
 
-                                <p>{{ $work->created_at }}</p>
-                            </a>
-                        </div>
+                            <p class="works-list-item__date">{{ $work->created_at }}</p>
+                        </a>
                     @empty
                         There are no works...
                     @endforelse

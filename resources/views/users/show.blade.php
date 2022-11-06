@@ -47,31 +47,27 @@
 
         <div class="works-list">
             @forelse($works as $work)
-                <div class="works-list__item">
-                    <a href="/work/{{ $work->id }}">
-                        <p>{{ $work->type }}</p>
+                <a href="/work/{{ $work->id }}" class="works-list-item">
+                    <p class="works-list-item__type">{{ $work->type }}</p>
 
-                        <p>{{ $work->title }}</p>
+                    <p class="works-list-item__title">{{ $work->title }}</p>
 
-                        <p>{{ $work->created_at }}</p>
+                    <p class="works-list-item__date">{{ $work->created_at }}</p>
 
-                        @can('update', $user)
-                            <a href="/work/{{ $work->id }}/edit" class="btn btn-secondary">Edit</a>
-                        @endcan
+                    @can('update', $user)
+                        <a href="/work/{{ $work->id }}/edit" class="btn btn-secondary">Edit</a>
+                    @endcan
 
-                        @can('delete', $work)
-                            <form action="/work/{{ $work->id }}/delete" method="POST">
-                                @csrf
+                    @can('delete', $work)
+                        <form action="/work/{{ $work->id }}/delete" method="POST">
+                            @csrf
 
-                                <button type="submit" class="btn btn-secondary">Delete</button>
-                            </form>
-                        @endcan
-
-                        <a href="" class="btn btn-secondary">More</a>
-                    </a>
-                </div>
+                            <button type="submit" class="btn btn-secondary">Delete</button>
+                        </form>
+                    @endcan
+                </a>
             @empty
-                There is no works...
+                There are no works...
             @endforelse
 
             <div class="row">
