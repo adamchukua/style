@@ -121,7 +121,9 @@ h2 {
         color: #000;
         text-decoration: none;
         transition: box-shadow 0.25s;
-        padding-bottom: 1.5rem;
+        margin-right: calc(var(--bs-gutter-x) * 0.5);
+        margin-left: calc(var(--bs-gutter-x) * 0.5);
+        padding: 0 0 1.5rem;
 
         &:hover {
             color: #000;
@@ -134,7 +136,8 @@ h2 {
             width: 100%;
             background: #6d6dff;
             height: 100px;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
+            line-height: 100px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.5);
             text-align: center;

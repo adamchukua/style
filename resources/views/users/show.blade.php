@@ -59,10 +59,10 @@
 
         <h2>Works</h2>
 
-        <div class="works-list">
+        <div class="works-list row g-4">
             @forelse($works as $work)
-                <a href="/work/{{ $work->id }}" class="link-unstyled">
-                    <div class="works-list-item">
+                <div class="works-list-item col-3">
+                    <a href="/work/{{ $work->id }}" class="link-unstyled">
                         <p class="works-list-item__type works-list-item__type--{{ $work->type }}">
                             {{ $work->type }}
                         </p>
@@ -70,22 +70,22 @@
                         <p class="works-list-item__title">{{ $work->title }}</p>
 
                         <p class="works-list-item__date">{{ $work->created_at }}</p>
+                    </a>
 
-                        <div class="d-flex">
-                            @can('update', $user)
-                                <a href="/work/{{ $work->id }}/edit" class="btn btn-secondary me-3">Edit</a>
-                            @endcan
+                    <div class="d-flex">
+                        @can('update', $user)
+                            <a href="/work/{{ $work->id }}/edit" class="btn btn-secondary me-3">Edit</a>
+                        @endcan
 
-                            @can('delete', $work)
-                                <form action="/work/{{ $work->id }}/delete" method="POST">
-                                    @csrf
+                        @can('delete', $work)
+                            <form action="/work/{{ $work->id }}/delete" method="POST">
+                                @csrf
 
-                                    <button type="submit" class="btn btn-secondary">Delete</button>
-                                </form>
-                            @endcan
-                        </div>
+                                <button type="submit" class="btn btn-secondary">Delete</button>
+                            </form>
+                        @endcan
                     </div>
-                </a>
+                </div>
             @empty
                 There are no works...
             @endforelse
