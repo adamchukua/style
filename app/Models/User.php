@@ -58,9 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
-    public function getRoleName()
+    public function getRoleName($user)
     {
-        switch (auth()->user()->role)
+        switch ($user->role)
         {
             case Role::AUTHOR:
                 return 'author';
@@ -74,6 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function lastnameFirstLetter($user)
     {
         return substr($user->lastname, 0, 1) . '.';
+    }
+
+    public function getFullname($user)
+    {
+        return $user->firstname . ' ' . $user->lastname;
     }
 
     public function works()

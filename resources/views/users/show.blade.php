@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="dashboard">
-            <p class="dashboard__role">{{ $user->getRoleName() }}</p>
+            <p class="role">{{ $user->getRoleName($user) }}</p>
 
             <div class="d-flex justify-content-between align-items-center">
                 <h1>{{ $user->firstname }} {{ $user->lastname }}</h1>

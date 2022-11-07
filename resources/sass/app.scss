@@ -90,6 +90,14 @@ h2 {
     text-decoration: inherit;
 }
 
+.role {
+    background: $primary-color-opacity-50;
+    width: fit-content;
+    padding: 0.2rem 1rem;
+    border-radius: 18px;
+    margin-bottom: 0;
+}
+
 .header {
     height: 80vh;
     display: flex;
@@ -163,14 +171,6 @@ h2 {
 }
 
 .dashboard {
-    &__role {
-        background: $primary-color-opacity-50;
-        width: fit-content;
-        padding: 0.2rem 1rem;
-        border-radius: 18px;
-        margin-bottom: 0;
-    }
-
     &-info {
         display: grid;
         grid-template-columns: 200px 200px 200px;

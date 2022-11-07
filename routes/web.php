@@ -34,6 +34,7 @@ Route::group(['middleware' => 'verified'], function () {
     Route::patch('/edit-profile', [App\Http\Controllers\UserController::class, 'update']);
 
     Route::post('/work/{work}/comment/create', [App\Http\Controllers\CommentController::class, 'store']);
+    Route::post('/work/{work}/comment/{comment}/create', [App\Http\Controllers\CommentController::class, 'store']);
 
     Route::post('/work/{work}/review/create', [App\Http\Controllers\CommentController::class, 'store']);
 

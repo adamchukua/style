@@ -18,6 +18,12 @@ const app = createApp({});
 import SearchInputComponent from './components/SearchInputComponent.vue';
 app.component('search-input-component', SearchInputComponent);
 
+import AnswerToCommentComponent from './components/AnswerToCommentComponent.vue';
+app.component('answer-component', AnswerToCommentComponent);
+
+import { Form } from 'vform'
+window.Form = Form;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

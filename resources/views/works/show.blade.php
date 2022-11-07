@@ -62,9 +62,49 @@
                 </div>
             </form>
 
-            @foreach($work->comments as $comment)
-                {{ $comment->text }}<br>
-            @endforeach
+            <div class="comments-list">
+                @forelse($work->comments()->where('comment-response_id', null)->orderBy('created_at', 'desc')->get() as $comment)
+                    <div class="comments-list-item">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <a href="/user/{{ $comment->user->id }}" class="comments-list-item__name">
+                                    {{ $comment->user->getFullname($comment->user) }}
+                                </a>
+
+                                <p class="role">{{ $comment->user->getRoleName($comment->user) }}</p>
+                            </div>
+
+                            <p class="comments-list-item__time">{{ $comment->created_at }}</p>
+                        </div>
+
+                        <p class="comments-list-item__text">{{ $comment->text }}</p>
+
+                        <answer-component work-id="{{ $work->id }}" comment-id="{{ $comment->id }}"></answer-component>
+
+                        @foreach($work->comments()->orderBy('created_at', 'desc')->get() as $response)
+                            <div class="comments-list-item ms-5">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <a href="/user/{{ $response->user->id }}" class="comments-list-item__name">
+                                            {{ $response->user->getFullname($response->user) }}
+                                        </a>
+
+                                        <p class="role">{{ $response->user->getRoleName($response->user) }}</p>
+                                    </div>
+
+                                    <p class="comments-list-item__time">{{ $response->created_at }}</p>
+                                </div>
+
+                                <p class="comments-list-item__text">{{ $response->text }}</p>
+
+                                <answer-component work-id="{{ $work->id }}" comment-id="{{ $response->id }}"></answer-component>
+                            </div>
+                        @endforeach
+                    </div>
+                @empty
+                    There are no comments...
+                @endforelse
+            </div>
         </div>
     </div>
 </div>
