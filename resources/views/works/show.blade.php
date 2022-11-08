@@ -12,7 +12,14 @@
 
             @can('create', \App\Models\Review::class)
                 @if(auth()->user()->expert->type == $work->type)
-                    <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+                    @if(auth()->user()->reviews->where('work_id', $work->id)->first())
+                        <div>
+                            <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary me-2">Edit review</a>
+                            <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Delete review</a>
+                        </div>
+                    @else
+                        <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+                    @endif
                 @endif
             @endcan
         </div>
