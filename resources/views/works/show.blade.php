@@ -37,11 +37,11 @@
 
         <div class="attachments">
             @foreach($work->attachments as $attachment)
-                <a href="/storage/{{ $attachment->path }}">
+                <a href="/storage/{{ $attachment->path }}" class="link-unstyled">
                     <div class="attachments-item">
                         <img src="/img/svg/download.svg" class="attachments-item__img">
 
-                        <p>{{ $attachment->getFilename($attachment->path) }}</p>
+                        <p class="attachments-item__path">{{ $attachment->getFilename($attachment->path) }}</p>
                     </div>
                 </a>
             @endforeach

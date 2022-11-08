@@ -277,10 +277,18 @@ h2 {
     background: $primary-color-opacity-50;
     color: #fff;
     display: flex;
+    border-radius: 18px;
+    padding: 1rem;
+    width: fit-content;
 
     &__img {
-        width: 35px;
+        width: 30px;
+    }
 
+    &__path {
+        font-weight: bold;
+        margin-bottom: 0;
+        margin-left: 0.7rem;
     }
 }
 
