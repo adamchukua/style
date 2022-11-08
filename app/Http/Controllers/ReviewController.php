@@ -35,7 +35,7 @@ class ReviewController extends Controller
             'innovativeness' => ['required', 'numeric', 'min:1', 'max:10'],
         ]);
 
-        $user->reviews->create(array_merge($data, [
+        $user->reviews()->create(array_merge($data, [
             'work_id' => $work->id
         ]));
 
