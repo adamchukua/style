@@ -10,8 +10,10 @@
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="work__title">{{ $work->title }}</h1>
 
-            @can('create', \App\Models\Work::class)
-                <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+            @can('create', \App\Models\Review::class)
+                @if(auth()->user()->expert->type == $work->type)
+                    <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+                @endif
             @endcan
         </div>
 
@@ -71,7 +73,10 @@
                                     {{ $comment->user->getFullname($comment->user) }}
                                 </a>
 
-                                <p class="role role--{{ $comment->user->getRoleName($comment->user) }}">{{ $comment->user->getRoleName($comment->user) }}</p>
+                                <p class="role role--{{ $comment->user->getRoleName($comment->user) }}">
+                                    {{ $comment->user->getRoleName($comment->user) }}
+                                    {{ $comment->user->role == \App\Models\Role::EXPERT ? ' of ' . $comment->user->expert->type : '' }}
+                                </p>
                             </div>
 
                             <p class="comments-list-item__time">{{ $comment->created_at }}</p>
@@ -81,7 +86,7 @@
 
                         <answer-component work-id="{{ $work->id }}" comment-id="{{ $comment->id }}"></answer-component>
 
-                        @foreach($work->comments()->orderBy('created_at', 'desc')->get() as $response)
+                        @foreach($work->comments()->where('comment-response_id', $comment->id)->orderBy('created_at', 'asc')->get() as $response)
                             <div class="comments-list-item ms-5">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
@@ -89,7 +94,10 @@
                                             {{ $response->user->getFullname($response->user) }}
                                         </a>
 
-                                        <p class="role role--{{ $response->user->getRoleName($response->user) }}">{{ $response->user->getRoleName($response->user) }}</p>
+                                        <p class="role role--{{ $response->user->getRoleName($response->user) }}">
+                                            {{ $response->user->getRoleName($response->user) }}
+                                            {{ $response->user->role == \App\Models\Role::EXPERT ? ' of ' . $response->user->expert->type : '' }}
+                                        </p>
                                     </div>
 
                                     <p class="comments-list-item__time">{{ $response->created_at }}</p>
@@ -97,12 +105,12 @@
 
                                 <p class="comments-list-item__text">{{ $response->text }}</p>
 
-                                <answer-component work-id="{{ $work->id }}" comment-id="{{ $response->id }}"></answer-component>
+                                <answer-component work-id="{{ $work->id }}" comment-id="{{ $comment->id }}"></answer-component>
                             </div>
                         @endforeach
                     </div>
                 @empty
-                    There are no comments...
+                    <p class="mt-3">There are no comments...</p>
                 @endforelse
             </div>
         </div>

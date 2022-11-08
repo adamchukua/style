@@ -6,7 +6,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="dashboard">
-            <p class="role role--{{ $user->getRoleName($user) }}">{{ $user->getRoleName($user) }}</p>
+            <p class="role role--{{ $user->getRoleName($user) }}">
+                {{ $user->getRoleName($user) }}
+                {{ $user->role == \App\Models\Role::EXPERT ? ' of ' . $user->expert->type : '' }}
+            </p>
 
             <div class="d-flex justify-content-between align-items-center">
                 <h1>{{ $user->firstname }} {{ $user->lastname }}</h1>
