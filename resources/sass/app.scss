@@ -91,11 +91,22 @@ h2 {
 }
 
 .role {
-    background: $primary-color-opacity-50;
     width: fit-content;
     padding: 0.2rem 1rem;
     border-radius: 18px;
     margin-bottom: 0;
+
+    &--author {
+        background: $primary-color-opacity-50;
+    }
+
+    &--expert {
+        background: $secondary-color-opacity-50;
+    }
+
+    &--admin {
+        background: $admin-color;
+    }
 }
 
 .header {

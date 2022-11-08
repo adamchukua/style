@@ -71,7 +71,7 @@
                                     {{ $comment->user->getFullname($comment->user) }}
                                 </a>
 
-                                <p class="role">{{ $comment->user->getRoleName($comment->user) }}</p>
+                                <p class="role role--{{ $comment->user->getRoleName($comment->user) }}">{{ $comment->user->getRoleName($comment->user) }}</p>
                             </div>
 
                             <p class="comments-list-item__time">{{ $comment->created_at }}</p>
@@ -89,7 +89,7 @@
                                             {{ $response->user->getFullname($response->user) }}
                                         </a>
 
-                                        <p class="role">{{ $response->user->getRoleName($response->user) }}</p>
+                                        <p class="role role--{{ $response->user->getRoleName($response->user) }}">{{ $response->user->getRoleName($response->user) }}</p>
                                     </div>
 
                                     <p class="comments-list-item__time">{{ $response->created_at }}</p>
