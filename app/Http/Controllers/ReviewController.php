@@ -76,7 +76,7 @@ class ReviewController extends Controller
 
     public function delete(Review $review)
     {
-        $this->authorize('delete', Review::class);
+        $this->authorize('delete', $review);
 
         $user = auth()->user();
         if ($review->work->type != $user->expert->type) {

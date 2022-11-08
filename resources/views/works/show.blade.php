@@ -18,9 +18,14 @@
                     @endphp
 
                     @if($review)
-                        <div>
+                        <div class="d-flex">
                             <a href="/review/{{ $review->id }}/edit" class="btn btn-secondary me-2">Edit review</a>
-                            <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Delete review</a>
+
+                            <form method="POST" action="/review/{{ $review->id }}/delete">
+                                @csrf
+
+                                <button class="btn btn-secondary" type="submit">Delete review</button>
+                            </form>
                         </div>
                     @else
                         <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
