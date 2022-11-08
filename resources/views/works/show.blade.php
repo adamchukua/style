@@ -23,20 +23,6 @@
 
         <p>{{ $work->text }}</p>
 
-        <div class="reviews">
-            @foreach($work->reviews as $review)
-                <div class="reviews-item">
-                    <p class="reviews-item__name">{{ $review->user->firstname }} {{ $review->user->lastname }}</p>
-
-                    <p class="reviews-item__text">{{ $review->text }}</p>
-
-                    <p class="reviews-item__mark">Complexity: {{ $review->complexity }}/10</p>
-                    <p class="reviews-item__mark">Creativity: {{ $review->creativity }}/10</p>
-                    <p class="reviews-item__mark">Innovativeness: {{ $review->innovativeness }}/10</p>
-                </div>
-            @endforeach
-        </div>
-
         <div class="attachments">
             @foreach($work->attachments as $attachment)
                 <a href="/storage/{{ $attachment->path }}" class="link-unstyled">
@@ -48,6 +34,22 @@
                 </a>
             @endforeach
         </div>
+
+        @can('viewAny', \App\Models\Review::class)
+            <div class="reviews">
+                @foreach($work->reviews as $review)
+                    <div class="reviews-item">
+                        <p class="reviews-item__name">{{ $review->user->firstname }} {{ $review->user->lastname }}</p>
+
+                        <p class="reviews-item__text">{{ $review->text }}</p>
+
+                        <p class="reviews-item__mark">Complexity: {{ $review->complexity }}/10</p>
+                        <p class="reviews-item__mark">Creativity: {{ $review->creativity }}/10</p>
+                        <p class="reviews-item__mark">Innovativeness: {{ $review->innovativeness }}/10</p>
+                    </div>
+                @endforeach
+            </div>
+        @endcan
 
         <h2>Comments</h2>
 

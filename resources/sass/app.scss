@@ -139,16 +139,18 @@ h2 {
     &-item {
         color: #000;
         text-decoration: none;
-        transition: box-shadow 0.25s;
-        margin-right: calc(var(--bs-gutter-x) * 0.5);
-        margin-left: calc(var(--bs-gutter-x) * 0.5);
-        padding: 0 0 1.5rem;
+        margin-bottom: 1.25rem;
 
-        &:hover {
-            color: #000;
-            -webkit-box-shadow: 10px 10px 0 0 #000;
-            -moz-box-shadow: 10px 10px 0 0 #000;
-            box-shadow: 10px 10px 0 0 #000;
+        &-shadow {
+            transition: box-shadow 0.25s;
+            padding-bottom: 1.25rem;
+
+            &:hover {
+                color: #000;
+                -webkit-box-shadow: 10px 10px 0 0 #000;
+                -moz-box-shadow: 10px 10px 0 0 #000;
+                box-shadow: 10px 10px 0 0 #000;
+            }
         }
 
         &__type {

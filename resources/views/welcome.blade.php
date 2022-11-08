@@ -65,9 +65,10 @@
                     </div>
                 </div>
 
-                <div class="works-list mt-4 row g-4">
+                <div class="works-list mt-4 row">
                     @forelse($works as $work)
-                            <div class="works-list-item col-3">
+                        <div class="works-list-item col-3">
+                            <div class="works-list-item-shadow">
                                 <a href="/work/{{ $work->id }}" class="link-unstyled ">
                                     <p class="works-list-item__type works-list-item__type--{{ $work->type }}">
                                         {{ $work->type }}
@@ -80,6 +81,7 @@
 
                                 <p class="works-list-item__date">{{ $work->created_at }}</p>
                             </div>
+                        </div>
                     @empty
                         There are no works...
                     @endforelse
