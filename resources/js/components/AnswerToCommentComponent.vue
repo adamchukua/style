@@ -1,9 +1,9 @@
 <template>
     <div>
-        <button @click="clicked = !clicked">Answer</button>
+        <button @click="clicked = !clicked" class="btn btn-secondary">Answer</button>
 
         <form action="#" @submit.prevent="answer">
-            <div class="input-group" v-if="clicked">
+            <div class="input-group mt-3" v-if="clicked">
                 <input v-model="form.text"
                        type="text"
                        name="text"

@@ -65,8 +65,8 @@
             <div class="comments-list">
                 @forelse($work->comments()->where('comment-response_id', null)->orderBy('created_at', 'desc')->get() as $comment)
                     <div class="comments-list-item">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
                                 <a href="/user/{{ $comment->user->id }}" class="comments-list-item__name">
                                     {{ $comment->user->getFullname($comment->user) }}
                                 </a>
@@ -83,8 +83,8 @@
 
                         @foreach($work->comments()->orderBy('created_at', 'desc')->get() as $response)
                             <div class="comments-list-item ms-5">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
                                         <a href="/user/{{ $response->user->id }}" class="comments-list-item__name">
                                             {{ $response->user->getFullname($response->user) }}
                                         </a>
