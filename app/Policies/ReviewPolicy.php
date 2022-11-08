@@ -56,7 +56,7 @@ class ReviewPolicy
      */
     public function update(User $user, Review $review)
     {
-        //
+        return $user->role == Role::EXPERT && $user->id == $review->user->id;
     }
 
     /**
@@ -68,7 +68,7 @@ class ReviewPolicy
      */
     public function delete(User $user, Review $review)
     {
-        //
+        return $user->role == Role::EXPERT && $user->id == $review->user->id;
     }
 
     /**

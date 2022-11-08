@@ -44,4 +44,10 @@ Route::group(['middleware' => 'verified'], function () {
     Route::get('/admin/expert/{expert}/edit', [App\Http\Controllers\ExpertController::class, 'edit']);
     Route::patch('/admin/expert/{expert}/edit', [App\Http\Controllers\ExpertController::class, 'update']);
     Route::post('/admin/expert/{expert}/delete', [App\Http\Controllers\ExpertController::class, 'delete']);
+
+    Route::get('/work/{work}/review/create', [App\Http\Controllers\ReviewController::class, 'create']);
+    Route::post('/work/{work}/review/create', [App\Http\Controllers\ReviewController::class, 'store']);
+    Route::get('/work/{work}/review/edit', [App\Http\Controllers\ReviewController::class, 'edit']);
+    Route::patch('/work/{work}/review/edit', [App\Http\Controllers\ReviewController::class, 'update']);
+    Route::post('/work/{work}/review/delete', [App\Http\Controllers\ReviewController::class, 'delete']);
 });
