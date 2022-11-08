@@ -44,7 +44,7 @@ class ReviewController extends Controller
 
     public function edit(Review $review)
     {
-        $this->authorize('update', Review::class);
+        $this->authorize('update', $review);
 
         if ($review->work->type != auth()->user()->expert->type) {
             abort(403);
@@ -55,7 +55,7 @@ class ReviewController extends Controller
 
     public function update(Review $review, Request $request)
     {
-        $this->authorize('create', Review::class);
+        $this->authorize('create', $review);
 
         $user = auth()->user();
         if ($review->work->type != $user->expert->type) {
