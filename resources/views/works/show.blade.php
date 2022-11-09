@@ -10,28 +10,32 @@
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="work__title">{{ $work->title }}</h1>
 
-            @can('create', \App\Models\Review::class)
-                @if(auth()->user()->expert->type == $work->type)
+            <div class="d-flex align-items-center">
+                <p title="Average mark put by experts" class="mark mb-0 me-3">{{ $work->getAverageMark($work) }}</p>
 
-                    @php
-                        $review = auth()->user()->reviews->where('work_id', $work->id)->first()
-                    @endphp
+                @can('create', \App\Models\Review::class)
+                    @if(auth()->user()->expert->type == $work->type)
 
-                    @if($review)
-                        <div class="d-flex">
-                            <a href="/review/{{ $review->id }}/edit" class="btn btn-secondary me-2">Edit review</a>
+                        @php
+                            $review = auth()->user()->reviews->where('work_id', $work->id)->first()
+                        @endphp
 
-                            <form method="POST" action="/review/{{ $review->id }}/delete">
-                                @csrf
+                        @if($review)
+                            <div class="d-flex">
+                                <a href="/review/{{ $review->id }}/edit" class="btn btn-secondary me-2">Edit review</a>
 
-                                <button class="btn btn-secondary" type="submit">Delete review</button>
-                            </form>
-                        </div>
-                    @else
-                        <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+                                <form method="POST" action="/review/{{ $review->id }}/delete">
+                                    @csrf
+
+                                    <button class="btn btn-secondary" type="submit">Delete review</button>
+                                </form>
+                            </div>
+                        @else
+                            <a href="/work/{{ $work->id }}/review/create" class="btn btn-secondary">Review this work</a>
+                        @endif
                     @endif
-                @endif
-            @endcan
+                @endcan
+            </div>
         </div>
 
         <a href="/user/{{ $work->user->id }}" class="work__author">
@@ -52,10 +56,10 @@
             @endforeach
         </div>
 
-        <div class="reviews-list">
+        <div class="reviews-list row mt-4">
             @foreach($work->reviews as $review)
                 @can('view', $review)
-                    <div class="reviews-item">
+                    <div class="reviews-item col-3">
                         <p class="reviews-item__name">{{ $review->user->firstname }} {{ $review->user->lastname }}</p>
 
                         <p class="reviews-item__text">{{ $review->text }}</p>

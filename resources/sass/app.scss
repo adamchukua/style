@@ -308,8 +308,36 @@ h2 {
             text-decoration: underline;
         }
     }
+}
 
-    &__btn {
+.reviews-item {
+    background: $secondary-color-opacity-50;
+    border-radius: 35px;
+    padding: 1.5rem;
 
+    &__name {
+        font-weight: bold;
+
+        &--link:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__mark {
+        margin-bottom: 0;
+    }
+}
+
+.mark {
+    font-size: 2rem;
+    font-weight: bold;
+    background: #000;
+    padding: 1rem;
+    border-radius: 50px;
+    color: #fff;
+
+    &--small {
+        font-size: 1rem;
+        padding: 0.2rem;
     }
 }

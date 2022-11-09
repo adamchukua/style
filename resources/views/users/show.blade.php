@@ -73,7 +73,10 @@
                                 {{ $work->type }}
                             </p>
 
-                            <p class="works-list-item__title">{{ $work->title }}</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="works-list-item__title">{{ $work->title }}</p>
+                                <p title="Average mark put by experts" class="mark mark--small">{{ $work->getAverageMark($work) }}</p>
+                            </div>
 
                             <p class="works-list-item__date">{{ $work->created_at }}</p>
                         </a>
@@ -107,17 +110,19 @@
         @can('viewAny', \App\Models\Review::class)
             <h2>Reviews</h2>
 
-            <div class="works-list">
+            <div class="reviews-list row">
                 @forelse($user->reviews as $review)
                     @can('view', $review)
-                        <div class="works-list__item">
-                            <a href="/work/{{ $review->work->id }}">
-                                <p>{{ $review->work->type }}</p>
-
-                                <p>{{ $review->work->title }}</p>
-
-                                <p>{{ $review->work->created_at }}</p>
+                        <div class="reviews-item col-3">
+                            <a class="reviews-item__name reviews-item__name--link link-unstyled mb-3 d-block" href="/work/{{ $review->work->id }}">
+                                {{ $review->work->title }}
                             </a>
+
+                            <p class="reviews-item__text">{{ $review->text }}</p>
+
+                            <p class="reviews-item__mark">Complexity: {{ $review->complexity }}/10</p>
+                            <p class="reviews-item__mark">Creativity: {{ $review->creativity }}/10</p>
+                            <p class="reviews-item__mark">Innovativeness: {{ $review->innovativeness }}/10</p>
                         </div>
                     @endcan
                 @empty

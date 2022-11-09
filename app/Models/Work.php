@@ -51,4 +51,13 @@ class Work extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function getAverageMark($work)
+    {
+        $complexity_sum = $work->reviews->sum('complexity');
+        $creativity_sum = $work->reviews->sum('creativity');
+        $innovativeness_sum = $work->reviews->sum('innovativeness');
+
+        return round(($complexity_sum + $creativity_sum + $innovativeness_sum) / 3, 1);
+    }
 }
