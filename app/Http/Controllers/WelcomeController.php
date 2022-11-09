@@ -25,7 +25,7 @@ class WelcomeController extends Controller
                 ->first()
                 ->works();
         } else {
-            $works = Work::select('*');
+            $works = Work::select(DB::raw('`works`.`title`, `works`.`text`, `works`.`type`, `works`.`created_at`, `works`.`user_id`, `works`.`id`'));
         }
 
         switch ($request['type']) {
@@ -45,11 +45,18 @@ class WelcomeController extends Controller
                 break;
         }
 
-        // Sort by time by default
-        $works = $works->orderBy('created_at', 'desc');
-
-        if ($request['sort'] == 'time') {
-            // TODO: sort by rating
+        switch ($request['sort'])
+        {
+            case 'time':
+                $works = $works->orderBy('created_at', 'desc');
+                break;
+            case 'rating':
+                $works = $works
+                    ->addSelect(DB::raw('SUM(`reviews`.`complexity` + `reviews`.`creativity` + `reviews`.`innovativeness`) as mark'))
+                    ->join('reviews', 'works.id', '=', 'reviews.work_id')
+                    ->groupBy('works.title')
+                    ->orderBy('mark', 'desc');
+                break;
         }
 
         $works = $works->paginate(10);
