@@ -28,7 +28,7 @@
                         <th scope="row">{{ $expert->id }}</th>
                         <td>{{ $expert->user->getFullname($expert->user) }}</td>
                         <td>{{ $expert->type }}</td>
-                        <td>{{ $expert->reviews != null ? $expert->reviews->count() : 0 }}</td>
+                        <td>{{ $expert->user->reviews()->first() != null ? $expert->user->reviews->count() : 0 }}</td>
                         <td><a href="/admin/expert/{{ $expert->id }}/edit" class="btn btn-secondary">Edit</a></td>
                         <td>
                             <form action="/admin/expert/{{ $expert->id }}/delete" method="POST">
