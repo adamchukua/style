@@ -75,7 +75,7 @@
 
                             <div class="d-flex justify-content-between">
                                 <p class="works-list-item__title">{{ $work->title }}</p>
-                                <p title="Average mark put by experts" class="mark mark--small">{{ $work->getAverageMark($work) }}</p>
+                                <p title="Average mark put by experts" class="mark mark--small me-2">{{ $work->getAverageMark($work) }}</p>
                             </div>
 
                             <p class="works-list-item__date">{{ $work->created_at }}</p>
