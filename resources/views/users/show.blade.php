@@ -109,19 +109,20 @@
 
             <div class="works-list">
                 @forelse($user->reviews as $review)
-                    <div class="works-list__item">
-                        <a href="/work/{{ $review->work->id }}">
-                            <p>{{ $review->work->type }}</p>
+                    @can('view', $review)
+                        <div class="works-list__item">
+                            <a href="/work/{{ $review->work->id }}">
+                                <p>{{ $review->work->type }}</p>
 
-                            <p>{{ $review->work->title }}</p>
+                                <p>{{ $review->work->title }}</p>
 
-                            <p>{{ $review->work->created_at }}</p>
-                        </a>
-                    </div>
+                                <p>{{ $review->work->created_at }}</p>
+                            </a>
+                        </div>
+                    @endcan
                 @empty
                     There are no reviews...
                 @endforelse
-
 
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">

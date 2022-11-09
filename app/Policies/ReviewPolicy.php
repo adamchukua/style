@@ -20,7 +20,7 @@ class ReviewPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->role == Role::ADMIN || $user->id == auth()->user()->id;
+        return $user->role == Role::EXPERT;
     }
 
     /**
@@ -32,7 +32,9 @@ class ReviewPolicy
      */
     public function view(User $user, Review $review)
     {
-        //
+        return $user->role == Role::ADMIN ||
+            $user->id == $review->user->id ||
+            $user->id == $review->work->user->id;
     }
 
     /**
