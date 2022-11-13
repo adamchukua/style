@@ -1,6 +1,6 @@
 <p align="center"><img src="https://i.imgur.com/iVMMY78.png"></p>
 
-## About
+## Description
 The developed application is a service, the purpose of which is to provide people with the opportunity to receive an assessment of their creative work from
 professionals in this field of activity. Whether it's music, painting, or something else.
 The service is used by 3 types of users: authors, experts, and administrators.
