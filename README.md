@@ -1,6 +1,14 @@
 <p align="center"><img src="https://i.imgur.com/iVMMY78.png"></p>
 
 ## How to run locally
+The developed application is a service, the purpose of which is to provide people with the opportunity to receive an assessment of their creative work from
+professionals in this field of activity. Whether it's music, painting, or something else.
+The service is used by 3 types of users: authors, experts, and administrators.
+Authors can post their creations on the platform, get experts' feedback, and view other clients' work.
+Experts are professionals in a particular field of activity. Their responsibilities include reviewing author work, writing reviews, and grading.
+The administrator manages the operation of the service, adding experts, etc.
+
+## How to run locally
 
 ### Windows
 
