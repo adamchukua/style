@@ -1,6 +1,6 @@
 <p align="center"><img src="https://i.imgur.com/iVMMY78.png"></p>
 
-## How to build
+## How to run locally
 
 ### Windows
 
